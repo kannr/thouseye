@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="info">
+    <appenders>
+        <Console name="stdout" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%d %-5p (%F:%L) - %m%n" />
+        </Console>
+
+        <RollingRandomAccessFile name="errorlog"
+                                 immediateFlush="true" fileName="/opt/logs/thouseye/error.log"
+                                 filePattern="/opt/logs/thouseye/error.log.%d{yyyy-MM-dd}">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%5p %d{yyyy-MM-dd HH:mm:ss} %c %L %m %n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingRandomAccessFile>
+    </appenders>
+    <loggers>
+        <!-- 3rdparty Loggers -->
+        <logger name="org.springframework.core" level="info"/>
+        <logger name="org.springframework.beans" level="info"/>
+        <logger name="org.springframework.context" level="info"/>>
+        <logger name="org.springframework.web" level="info"/>
+        <root level="error">
+            <appender-ref ref="stdout" />
+            <appender-ref ref="errorlog" />
+        </root>
+    </loggers>
+</configuration>
