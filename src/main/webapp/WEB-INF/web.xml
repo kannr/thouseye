@@ -22,7 +22,7 @@
 
 	<servlet-mapping>
 		<servlet-name>thouseye</servlet-name>
-		<url-pattern>/thouseye/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 
 	<filter>
